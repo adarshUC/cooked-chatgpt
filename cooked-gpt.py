@@ -17,7 +17,7 @@ def center_text(text):
     return ' ' * padding + text
 
 def receive_api():
-    api_key = os.getenv("MIMO_OPENAI_API_KEY")
+    api_key = os.getenv("OPENAI_API_KEY")
     if api_key:
         print(f"{Fore.GREEN}API Key successfully retrieved: {api_key}")
     else:
@@ -41,7 +41,6 @@ def send_message(user_message, thread_id, api_key):
     return response.json()
 
 def main():
-    # Load environment variables from .env file
     load_dotenv("D:\\Telegram Desktop\\secret.env")
     
     api_key = os.getenv("MIMO_OPENAI_API_KEY")
@@ -58,8 +57,8 @@ def main():
     print(center_text(f"{Fore.CYAN}Starting a new thread for you.\n"))
 
     while True:
-        print(Fore.YELLOW + "You: ", end='')  # Print "You: " in yellow
-        user_message = input()  # Take user input without color
+        print(Fore.YELLOW + "You: ", end='')
+        user_message = input()
         
         if user_message.lower() == "exit":
             break
